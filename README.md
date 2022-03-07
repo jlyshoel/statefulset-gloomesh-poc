@@ -6,7 +6,7 @@ For replication purposes, we want to be able to access a single pod within a sta
 
 The application will still access the service endpoints, but in the example our WebFront-replicaset need to access directly a single pod in the stateful set in the other cluster.
 
-![System overview](docs/overview.drawio.png)
+![System overview](docs/overview2.drawio.png)
 
 
 ## Deploying test code in a cluster
