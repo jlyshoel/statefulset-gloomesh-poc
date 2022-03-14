@@ -44,3 +44,41 @@ spec:
       resources:
         requests:
           storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-0
+spec:
+  type: ClusterIP
+  selector:
+    statefulset.kubernetes.io/pod-name: web-0
+  ports:
+  - protocol: TCP
+    port: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-1
+spec:
+  type: ClusterIP
+  selector:
+    statefulset.kubernetes.io/pod-name: web-1
+  ports:
+  - protocol: TCP
+    port: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always
