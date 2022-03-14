@@ -1,0 +1,26 @@
+apiVersion: networking.enterprise.mesh.gloo.solo.io/v1beta1
+kind: VirtualDestination
+metadata:
+  name: web-0-global
+  namespace: gloo-mesh
+spec:
+  hostname: web-0-global.global
+  port:
+    number: 80
+    targetNumber: 80
+    protocol: http
+  localized:
+    outlierDetection:
+      consecutiveErrors: 2
+      maxEjectionPercent: 100
+      interval: 5s
+      baseEjectionTime: 30s
+    destinationSelectors:
+    - kubeServiceRefs:
+        services:
+        - name: webbackend
+          namespace: default
+          clusterName: cluster2
+  virtualMesh:
+    name: virtual-mesh
+    namespace: gloo-mesh
