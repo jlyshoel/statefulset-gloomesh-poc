@@ -16,8 +16,8 @@ The application will still access the service endpoints, but in the example our 
 
 Assuming you already have two clusters, configured with a virtual mesh and GlooMesh, deploy the yaml-files:
 ```
-kubectl --context atest-customer3-cluster1 apply -f cluster1
-kubectl --context atest-customer3-cluster2 apply -f cluster2
+kubectl --context cluster1 apply -f cluster1
+kubectl --context cluster2 apply -f cluster2
 ```
 
 
