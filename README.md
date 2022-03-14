@@ -6,8 +6,16 @@ For replication purposes, we want to be able to access a single pod within a sta
 
 The application will still access the service endpoints, but in the example our WebFront-replicaset need to access directly a single pod in the stateful set in the other cluster.
 
-![System overview](docs/overview2.drawio.png)
+![System overview](docs/overview.drawio.png)
 
+### Current overview
+
+| Source                       | Destination               | Success | Comment                                                                      |
+| ---------------------------- | ------------------------- | ------- | ---------------------------------------------------------------------------- |
+| Cluster1/Application (left)  | Cluster2/WebBackend (svc) | YES     |                                                                              |
+| Cluster1/WebFront            | Cluster2/web-1 (svc)      | NO      | Accessing the pod directly or accessing the single-pod service doesn't work. |
+| Cluster2/Application (right) | Cluster2/WebBackend (svc) | YES     |
+| Cluster2/Application (right) | Cluster2/2eb-1 (svc)      | YES     | So we know the service web-0 and web-1 is working as expected                |
 
 ## Deploying test code in a cluster
 
