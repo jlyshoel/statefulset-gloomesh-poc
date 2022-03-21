@@ -1,5 +1,9 @@
 # POC accessing a single stateful set pod in a virtual mesh
 
+## Update 2022-03-21: 
+
+The underlying issue is fixed in GlooMesh 2.0, and requires no futher implementation (as long as you set federation=true in your workspace setting). Since we don't require this to work in GlooMesh v1, no further exploration will be done. 
+
 ## Description
 
 For replication purposes, we want to be able to access a single pod within a stateful set. 
